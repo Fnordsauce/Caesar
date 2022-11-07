@@ -15,6 +15,7 @@ pageObj = pdfReader.getPage(2)
   
 # extracting text from page
 print(pageObj.extractText())
+# Test Change
 
 #6 Columns // Date : Transaction : Description : Charged : Credit : Balance 
 
