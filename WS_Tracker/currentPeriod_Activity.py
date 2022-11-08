@@ -12,4 +12,25 @@ for df in dfs:
 data.columns = data.iloc[0]
 data = data.reindex(data.index.drop(0)).reset_index(drop=True)
 data.columns.name = None
-print(data)
+#print(data)
+key = "QQQ"
+targetArr = []
+for index, row in data.iterrows():
+  #print(row["Date Transaction Description"])
+  if key in row["Date Transaction Description"]:
+    targetArr.append(row["Date Transaction Description"])
+
+#print(targetArr)
+targetNum = []
+for sen in targetArr:
+    sen = sen.split()
+    for index, word in enumerate(sen):
+        
+        if word == 'Bought':
+            targetNum.append(sen[index+1])
+#print(targetNum)
+targetDict = {}
+targetDict[key] = targetNum
+
+
+return targetDict
