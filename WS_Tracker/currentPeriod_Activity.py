@@ -13,9 +13,14 @@ counter= 0
 for df in dfs:
     if counter == 0:
         data = df
-    print(df.size)
-    print(df)
     counter+=1
 
 
-print(df)
+#data.rename(columns=data.iloc[0]).drop(data.index[0])
+#print(data)
+
+data.columns = data.iloc[0]
+data = data.reindex(data.index.drop(0)).reset_index(drop=True)
+data.columns.name = None
+print(data)
+print(data["Balance ($)"].mean(numeric_only=True))
