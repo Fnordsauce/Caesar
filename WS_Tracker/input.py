@@ -1,7 +1,7 @@
 # importing the required modules
 import PyPDF2
 #Create a pdf file object 
-pdfFileObj = open('Personal_Project\WS_Tracker\Performance_Statements\OCT22.pdf', 'rb')
+pdfFileObj = open('WS_Tracker\Performance_Statements\OCT22.pdf', 'rb')
 
 #Creating a pdf file reader obkect from the pdfgilreader class in the pypdf2 module 
 #Create a pdf reader object
