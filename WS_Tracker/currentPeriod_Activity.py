@@ -5,8 +5,13 @@ import tabula
 from tabulate import tabulate
 
 def statementReader():
-    dfs = tabula.read_pdf("Caesar_Project\Caesar\WS_Tracker\Performance_Statements\OCT22.pdf",stream=True, multiple_tables=True, pages="3", encoding="utf-8")
+    dfs = tabula.read_pdf("Caesar_Project\Caesar\WS_Tracker\Performance_Statements\OCT22.pdf",
+    stream=True,
+    multiple_tables=True,
+    pages="3",
+    encoding="utf-8")
 
+    
 
     count = 0
     for df in dfs:
@@ -28,19 +33,24 @@ def statementReader():
 
     #print(targetArr)
     targetAmount = []
+    targetAmountDates = []
+    temp = ""
     for sen in targetArr:
         sen = sen.split()
         for index, word in enumerate(sen):
+            temp = sen[0]
             if word == 'Bought':
                 targetAmount.append(sen[index+1])
+                targetAmountDates.append(temp)
+            temp = " "
     #print(targetNum)
     targetReturn = []
     appendList = []
-    print(targetAmount, targetPrice)
-    for (b, c) in zip(targetAmount, targetPrice):
+    for (b, c, d) in zip(targetAmount, targetPrice, targetAmountDates):
         appendList.append(key)
         appendList.append(b)
         appendList.append(c)
+        appendList.append(d)
         targetReturn.append(appendList)
         appendList = []
 
