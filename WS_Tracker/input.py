@@ -11,7 +11,6 @@ QQQ = closing_price("QQQ")
 points = []
 dates = []
 PurchaseARR = statementReader()
-print(PurchaseARR)
 
 for x in PurchaseARR:
     price = float(x[2][1:])
@@ -21,7 +20,6 @@ for x in PurchaseARR:
     value = value / 1.4
     points.append(value)
     dates.append(x[-1])
-    print(points, dates)
 #Grab the dates from the intial plot
 
 
