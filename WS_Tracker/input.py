@@ -10,7 +10,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, 
 NavigationToolbar2Tk)
 
-def chartData():
+def chartData(Sec_Names):
     root = tk.Tk()
     greeting = tk.Label(text="QQQ Porfolio Summary")
     greeting.grid(row = 0, column = 0,)
@@ -20,7 +20,7 @@ def chartData():
         Asset = pd.DataFrame(yf.download(ticker, period="2y",interval="1wk")['Adj Close'])          
         return Asset
 
-    QQQ = closing_price("QQQ")
+    QQQ = closing_price("QQQ")  
 
     points = []
     dates = []
@@ -41,8 +41,14 @@ def chartData():
     line2 = FigureCanvasTkAgg(figure2, root)
     line2.get_tk_widget().grid(row = 1, column = 0,)
     xLine = QQQ.plot(kind='line', legend=True, ax=ax2, color='r', fontsize=10)
+    
     ax2.scatter(dates, points)
-    #ax2.line()
+    chart_counter = 0
+    chart = [1,2,3]
+    for chart in charts:
+        ax2.figure.savefig('my_plot.png' + chart_counter)
+    
+    #ax2.line()Caesar_Project\Caesar\WS_Tracker\performanceCharts
     #going to use the points array 
     PointAVE = sum(points) / len(points)
     #Grabbing Dates Column
@@ -53,8 +59,10 @@ def chartData():
 
     #XXX---------------------------------------- OVERVIEW TAB -------------------------------------XXX
 
-    overViewFrame = Frame(root, width=500)
-    overViewFrame.grid(row = 1, column = 1,)
+    overViewFrame = Frame(root,height=250, width=250, highlightbackground="blue")
+
+    overViewFrame.grid(row = 2, column = 0,)
+
     titleLabel = Label(overViewFrame, text="Overview of Account")
     titleLabel.pack()
 
